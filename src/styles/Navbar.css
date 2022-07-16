@@ -1,0 +1,46 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color:#353b48;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+.navbar form {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar form input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 300px;
+  transition: .2s;
+}
+
+.navbar form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: .2s;
+
+}
+
+.navbar form button:hover {
+  color: #00a8ff;
+}
+
+.navbar form input:focus {
+  outline: 2px solid #00a8ff;
+}
