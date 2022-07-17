@@ -10,8 +10,25 @@ export const URL_MOVIE_DB = {
   IMG: `https://image.tmdb.org/t/p/w500/`,
 };
 
-const generateURL = (type: any = "top_rated") => {
-  return URL_MOVIE_DB.API + type + "?" + API_KEY + "&language=pt-BR";
+const generateURL = (
+  page: number = 1,
+  type?: string,
+  id?: any,
+  isSearch: boolean = false
+) => {
+  if (isSearch) {
+    return URL_MOVIE_DB.SEARCH + "?" + API_KEY + "&language=pt-BR&page=" + page;
+  }
+
+  if (id) {
+    return URL_MOVIE_DB.API + id + "?" + API_KEY + "&language=pt-BR";
+  }
+
+  const type_url = type || "top_rated";
+
+  return (
+    URL_MOVIE_DB.API + type_url + "?" + API_KEY + "&language=pt-BR&page=" + page
+  );
 };
 
 export default generateURL;

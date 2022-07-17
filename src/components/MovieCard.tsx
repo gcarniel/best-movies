@@ -1,12 +1,12 @@
 import { Star } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { URL_MOVIE_DB } from "../constants";
-import { Movie } from "../interfaces/movie";
+import { IMovie } from "../interfaces/movie";
 
 import "../styles/MovieCard.css";
 
 interface MovieCardProps {
-  movie: Movie;
+  movie: IMovie;
   buttonVisibled?: boolean;
 }
 

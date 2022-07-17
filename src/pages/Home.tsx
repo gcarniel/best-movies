@@ -1,35 +1,44 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import generateURL from "../constants";
-import { Movie } from "../interfaces/movie";
+import { IMovie } from "../interfaces/movie";
 
-import "../styles/Movies.css";
+// import "../styles/Movies.css";
+import "../styles/MoviesGrid.css";
 
 function Home() {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<IMovie[]>([]);
+  const [page, setPage] = useState(1);
 
   const getMovies = async () => {
-    const topRatedUrl = generateURL();
+    const topRatedUrl = generateURL(page, "", null);
     const res = await fetch(topRatedUrl);
     const data = await res.json();
 
     if (!data.results) return;
 
-    setMovies(data.results);
+    setMovies([...movies, ...data.results]);
+  };
+
+  const seeMore = () => {
+    setPage((prev) => prev + 1);
   };
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [page]);
 
   return (
     <div className="container">
-      <h1>Os mais avaliados</h1>
-      <div className="movies">
+      <h2 className="title">Melhores filmes</h2>
+      <div className="movies-container">
         {movies &&
-          movies.map((movie: Movie) => (
+          movies.map((movie: IMovie) => (
             <MovieCard key={movie.id} movie={movie} />
           ))}
+      </div>
+      <div className="see-more">
+        <button onClick={seeMore}>Ver mais</button>
       </div>
     </div>
   );

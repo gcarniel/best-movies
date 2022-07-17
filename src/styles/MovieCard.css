@@ -2,7 +2,7 @@
   display: flex;  
   flex-direction: column;
   border-radius: 10px;
-  border: 10px solid #a8a6a6;
+  border: 10px solid #273c75;
   padding: 10px;
   width: 30%;
   gap:.5rem;
@@ -31,4 +31,8 @@
 
 .movie-card-container > a:hover { 
   background-color: #00a8ff;
+}
+
+.info p{
+  color: white;
 }
